@@ -1,0 +1,16 @@
+{
+  "name": "wplib",
+  "version": "1.0.0",
+  "description": "A function library for the Japanese Wikipedia.",
+  "main": "wplib.js",
+  "scripts": {
+    "docs": "jsdoc -c jsdoc.json"
+  },
+  "author": "Dr4goniez",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jquery": "^3.5.14",
+    "eslint": "^8.30.0",
+    "jsdoc": "^4.0.0"
+  }
+}
