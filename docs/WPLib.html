@@ -259,207 +259,6 @@
     
 
     
-    <h4 class="name" id="ajax"><span class="type-signature"></span>ajax<span class="signature">(parameters, ajaxOptions<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {jQuery.&lt;Promise>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Send an AJAX request to the API.</p>
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>parameters</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Parameters to the API</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>ajaxOptions</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>Parameters to pass to jQuery.ajax</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-license">License:</dt>
-    <dd class="tag-license"><ul class="dummy"><li>MediaWiki This function is largely adapted from MediaWiki Core.</li></ul></dd>
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line689">line 689</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">jQuery.&lt;Promise></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
     <h4 class="name" id="arraysEqual"><span class="type-signature"></span>arraysEqual<span class="signature">(array1, array2, orderInsensitive<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {boolean|null}</span></h4>
     
 
@@ -888,7 +687,7 @@ passed as the first argument. Note that concat targets must be at res.query[conc
     
 
     
-    <h4 class="name" id="continuedQuery"><span class="type-signature"></span>continuedQuery<span class="signature">(parameters, limit<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {jQuery.&lt;Promise.&lt;Array.&lt;object>>>}</span></h4>
+    <h4 class="name" id="continuedQuery"><span class="type-signature"></span>continuedQuery<span class="signature">(parameters, limit<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {JQueryPromise.&lt;Array.&lt;object>>}</span></h4>
     
 
     
@@ -1033,7 +832,7 @@ The '**limit' property in the 'parameters' should always be set to 'max'.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line827">line 827</a>
+        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line820">line 820</a>
     </li></ul></dd>
     
 
@@ -1073,7 +872,7 @@ The '**limit' property in the 'parameters' should always be set to 'max'.</p>
     </dt>
     <dd>
         
-<span class="param-type">jQuery.&lt;Promise.&lt;Array.&lt;object>>></span>
+<span class="param-type">JQueryPromise.&lt;Array.&lt;object>></span>
 
 
     </dd>
@@ -1091,7 +890,7 @@ The '**limit' property in the 'parameters' should always be set to 'max'.</p>
     
 
     
-    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(parameters, ajaxOptions<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {jQuery.&lt;Promise>}</span></h4>
+    <h4 class="name" id="get"><span class="type-signature"></span>get<span class="signature">(parameters, ajaxOptions<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {JQueryPromise.&lt;<a href="global.html#DynamicObject">DynamicObject</a>>}</span></h4>
     
 
     
@@ -1235,7 +1034,7 @@ The '**limit' property in the 'parameters' should always be set to 'max'.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line740">line 740</a>
+        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line736">line 736</a>
     </li></ul></dd>
     
 
@@ -1271,7 +1070,7 @@ The '**limit' property in the 'parameters' should always be set to 'max'.</p>
     </dt>
     <dd>
         
-<span class="param-type">jQuery.&lt;Promise></span>
+<span class="param-type">JQueryPromise.&lt;<a href="global.html#DynamicObject">DynamicObject</a>></span>
 
 
     </dd>
@@ -1391,7 +1190,7 @@ inside other occurrences of these tags.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line612">line 612</a>
+        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line611">line 611</a>
     </li></ul></dd>
     
 
@@ -1445,7 +1244,7 @@ inside other occurrences of these tags.</p>
     
 
     
-    <h4 class="name" id="getInterface"><span class="type-signature"></span>getInterface<span class="signature">(interfaceName, createOptionTags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {jQuery.&lt;Promise.&lt;(string|Array.&lt;{index: number, caption: string}>)>>}</span></h4>
+    <h4 class="name" id="getInterface"><span class="type-signature"></span>getInterface<span class="signature">(interfaceName, createOptionTags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {JQueryPromise.&lt;(string|Array.&lt;{index: number, caption: string}>)>}</span></h4>
     
 
     
@@ -1589,7 +1388,7 @@ inside other occurrences of these tags.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line968">line 968</a>
+        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line954">line 954</a>
     </li></ul></dd>
     
 
@@ -1625,7 +1424,7 @@ inside other occurrences of these tags.</p>
     </dt>
     <dd>
         
-<span class="param-type">jQuery.&lt;Promise.&lt;(string|Array.&lt;{index: number, caption: string}>)>></span>
+<span class="param-type">JQueryPromise.&lt;(string|Array.&lt;{index: number, caption: string}>)></span>
 
 
     </dd>
@@ -1643,7 +1442,7 @@ inside other occurrences of these tags.</p>
     
 
     
-    <h4 class="name" id="getLtaList"><span class="type-signature"></span>getLtaList<span class="signature">(wikiLinkFormat<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {jQuery.&lt;Promise.&lt;Array.&lt;string>>>}</span></h4>
+    <h4 class="name" id="getLtaList"><span class="type-signature"></span>getLtaList<span class="signature">(wikiLinkFormat<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {JQueryPromise.&lt;Array.&lt;string>>}</span></h4>
     
 
     
@@ -1756,7 +1555,7 @@ inside other occurrences of these tags.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line1103">line 1103</a>
+        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line1084">line 1084</a>
     </li></ul></dd>
     
 
@@ -1796,7 +1595,7 @@ inside other occurrences of these tags.</p>
     </dt>
     <dd>
         
-<span class="param-type">jQuery.&lt;Promise.&lt;Array.&lt;string>>></span>
+<span class="param-type">JQueryPromise.&lt;Array.&lt;string>></span>
 
 
     </dd>
@@ -1814,7 +1613,7 @@ inside other occurrences of these tags.</p>
     
 
     
-    <h4 class="name" id="getVipList"><span class="type-signature"></span>getVipList<span class="signature">(wikiLinkFormat<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {jQuery.&lt;Promise.&lt;Array.&lt;string>>>}</span></h4>
+    <h4 class="name" id="getVipList"><span class="type-signature"></span>getVipList<span class="signature">(wikiLinkFormat<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {JQueryPromise.&lt;Array.&lt;string>>}</span></h4>
     
 
     
@@ -1927,7 +1726,7 @@ inside other occurrences of these tags.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line1053">line 1053</a>
+        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line1035">line 1035</a>
     </li></ul></dd>
     
 
@@ -1967,7 +1766,7 @@ inside other occurrences of these tags.</p>
     </dt>
     <dd>
         
-<span class="param-type">jQuery.&lt;Promise.&lt;Array.&lt;string>>></span>
+<span class="param-type">JQueryPromise.&lt;Array.&lt;string>></span>
 
 
     </dd>
@@ -1985,7 +1784,7 @@ inside other occurrences of these tags.</p>
     
 
     
-    <h4 class="name" id="massQuery"><span class="type-signature"></span>massQuery<span class="signature">(params, batchParam, batchLimit<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {jQuery.&lt;Promise.&lt;Array.&lt;(object|undefined)>>>}</span></h4>
+    <h4 class="name" id="massQuery"><span class="type-signature"></span>massQuery<span class="signature">(params, batchParam, batchLimit<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {JQueryPromise.&lt;Array.&lt;(object|undefined)>>}</span></h4>
     
 
     
@@ -2171,7 +1970,7 @@ is not modified if a unique value is specified for this argument.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line870">line 870</a>
+        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line862">line 862</a>
     </li></ul></dd>
     
 
@@ -2212,7 +2011,7 @@ batchParam is an empty array, Promise&lt;[]&gt; (empty array) is returned.</p>
     </dt>
     <dd>
         
-<span class="param-type">jQuery.&lt;Promise.&lt;Array.&lt;(object|undefined)>>></span>
+<span class="param-type">JQueryPromise.&lt;Array.&lt;(object|undefined)>></span>
 
 
     </dd>
@@ -2404,7 +2203,7 @@ batchParam is an empty array, Promise&lt;[]&gt; (empty array) is returned.</p>
     
 
     
-    <h4 class="name" id="post"><span class="type-signature"></span>post<span class="signature">(parameters, ajaxOptions<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {jQuery.&lt;Promise>}</span></h4>
+    <h4 class="name" id="post"><span class="type-signature"></span>post<span class="signature">(parameters, ajaxOptions<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {JQueryPromise.&lt;<a href="global.html#DynamicObject">DynamicObject</a>>}</span></h4>
     
 
     
@@ -2548,7 +2347,7 @@ batchParam is an empty array, Promise&lt;[]&gt; (empty array) is returned.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line752">line 752</a>
+        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line748">line 748</a>
     </li></ul></dd>
     
 
@@ -2584,7 +2383,7 @@ batchParam is an empty array, Promise&lt;[]&gt; (empty array) is returned.</p>
     </dt>
     <dd>
         
-<span class="param-type">jQuery.&lt;Promise></span>
+<span class="param-type">JQueryPromise.&lt;<a href="global.html#DynamicObject">DynamicObject</a>></span>
 
 
     </dd>
@@ -2754,7 +2553,7 @@ replaced with one unique replacer, and the 'replacers' argument is a string or a
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line637">line 637</a>
+        <a href="wplib.js.html">wplib.js</a>, <a href="wplib.js.html#line635">line 635</a>
     </li></ul></dd>
     
 
@@ -3028,7 +2827,7 @@ replaced with one unique replacer, and the 'replacers' argument is a string or a
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Thu Dec 29 2022 02:57:32 GMT+0900 (Japan Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Dec 30 2022 09:31:02 GMT+0900 (Japan Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

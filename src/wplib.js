@@ -292,7 +292,7 @@ WPLib.prototype = {
                         return /\{\{[.\n]*\}\}/.test(templateWikitext);
                     })
                     .map(function(templateWikitext) {
-                        // @ts-ignore
+                        // @ts-ignore nestlevel is never undefined
                         return self.parseTemplates(templateWikitext, config, nestlevel + 1);
                     })
                     .reduce(function(acc, TemplateArray) {
@@ -303,14 +303,14 @@ WPLib.prototype = {
             // Filter the array by template name(s)?
             if (typeof config.namePredicate === 'function') {
                 parsed = parsed.filter(function(Template) {
-                    // @ts-ignore
+                    // @ts-ignore config.namePredicate is never undefined in this block
                     return config.namePredicate(Template.name);
                 });
             }
             // Filter the array by a user-defined condition?
             if (typeof config.templatePredicate === 'function') {
                 parsed = parsed.filter(function(Template) {
-                    // @ts-ignore
+                    // @ts-ignore config.templatePredicate is never undefined in this block
                     return config.templatePredicate(Template);
                 });
             }
@@ -574,7 +574,6 @@ WPLib.prototype = {
         parsed = parsed.sort(function(obj1, obj2) {
             return obj1.index.start - obj2.index.start;
         });
-        // @ts-ignore
         parsed.forEach(function(obj, i, arr) {
             // If the relevant indexes are e.g. '0 ... [1 ... 59] ... 60', the nestlevel is 1
             var nestlevel = arr.filter(function(objF) { return objF.index.start < obj.index.start && obj.index.end < objF.index.end; }).length;
@@ -586,14 +585,14 @@ WPLib.prototype = {
             // Filter the array by tag name(s)?
             if (typeof config.namePredicate === 'function') {
                 parsed = parsed.filter(function(Html) {
-                    // @ts-ignore
+                    // @ts-ignore config.namePredicate is never undefined in this block
                     return config.namePredicate(Html.name);
                 });
             }
             // Filter the array by a user-defined condition?
             if (typeof config.htmlPredicate === 'function') {
                 parsed = parsed.filter(function(Html) {
-                    // @ts-ignore
+                    // @ts-ignore config.htmlPredicate is never undefined in this block
                     return config.htmlPredicate(Html);
                 });
             }
@@ -614,7 +613,6 @@ WPLib.prototype = {
             return ['comment', 'nowiki', 'pre', 'syntaxhighlight', 'source'].indexOf(name) !== -1;
         };
         var commentTags = this.parseHtml(wikitext, {namePredicate: namePredicate})
-            // @ts-ignore
             .filter(function(Html, i, arr) {
                 // Get rid of comment tags that are nested inside bigger comment tags
                 return !arr.some(function(Html2) {return Html2.index.start < Html.index.start && Html.index.end < Html2.index.end; });
@@ -643,7 +641,6 @@ WPLib.prototype = {
             replacersArr = replacers.slice(); // Deep copy
         }
         if (replacees.length !== replacersArr.length && replacersArr.length === 1) {
-            // @ts-ignore
             replacees.forEach(function(el, i) {
                 if (i === 0) return;
                 replacersArr.push(replacersArr[0]);
@@ -682,12 +679,13 @@ WPLib.prototype = {
      * Send an AJAX request to the API.
      * @param {object} parameters Parameters to the API
      * @param {object} [ajaxOptions] Parameters to pass to jQuery.ajax
-     * @returns {jQuery<Promise>}
+     * @returns {JQueryPromise<DynamicObject>}
+     * @typedef DynamicObject
+     * @type {Object.<string, any>}
      * @license MediaWiki This function is largely adapted from MediaWiki Core.
      * @link https://doc.wikimedia.org/mediawiki-core/master/js/source/index4.html#mw-Api-method-ajax
      */
     ajax: function(parameters, ajaxOptions) {
-        // @ts-ignore
         var def = $.Deferred();
 
         parameters = this.merge({}, this.defaultOptions.parameters, parameters || {});
@@ -705,7 +703,6 @@ WPLib.prototype = {
             });
         })
         // AJAX success just means "200 OK" response, also check API error codes
-        // @ts-ignore
         .done(function(result, textStatus, jqXHR) {
             var code;
             if (result === undefined || result === null || result === '') {
@@ -727,7 +724,6 @@ WPLib.prototype = {
             }
         });
 
-        // @ts-ignore
         return def.promise();
     },
 
@@ -735,7 +731,7 @@ WPLib.prototype = {
      * Perform API get request.
      * @param {Object} parameters
      * @param {Object} [ajaxOptions]
-     * @return {jQuery<Promise>}
+     * @return {JQueryPromise<DynamicObject>}
      */
     get: function(parameters, ajaxOptions) {
         ajaxOptions = ajaxOptions || {};
@@ -747,7 +743,7 @@ WPLib.prototype = {
      * Perform API post request.
      * @param {Object} parameters
      * @param {Object} [ajaxOptions]
-     * @return {jQuery<Promise>}
+     * @return {JQueryPromise<DynamicObject>}
      */
     post: function(parameters, ajaxOptions) {
         ajaxOptions = ajaxOptions || {};
@@ -759,7 +755,7 @@ WPLib.prototype = {
      * Get the latest revision of a given page. This function never rejects.
      * @param {string} pagename 
      * @param {object} ajaxOptions 
-     * @returns {ReadResponse|false|undefined} False if the page doesn't exist, undefined if an error occurs, or else an object
+     * @returns {JQueryPromise<ReadResponse|false|undefined>} False if the page doesn't exist, undefined if an error occurs, or else an object
      * @typedef ReadResponse
      * @type {object}
      * @property {boolean} isRedirect
@@ -780,7 +776,6 @@ WPLib.prototype = {
         };
 
         this.get(params, ajaxOptions)
-            // @ts-ignore
             .then(function(res) {
 
                 var resPgs;
@@ -806,13 +801,11 @@ WPLib.prototype = {
                     revid: resRev.revid.toString()
                 });
 
-            // @ts-ignore
             }).catch(function(code, err) {
                 console.warn(err.error.info);
                 def.resolve();
             });
 
-        // @ts-ignore
         return def.promise();
     },
 
@@ -821,7 +814,7 @@ WPLib.prototype = {
      * The '**limit' property in the 'parameters' should always be set to 'max'.
      * @param {object} parameters
      * @param {number} [limit] 10 by default 
-     * @returns {jQuery<Promise<Array<object>>>} Array of API responses.
+     * @returns {JQueryPromise<Array<object>>} Array of API responses.
      * @link https://github.com/Dr4goniez/dragobot/blob/740811cfecc24264b324085c8490ae63ef1ea1ea/src/lib.ts#L324
      */
     continuedQuery: function(parameters, limit) {
@@ -832,17 +825,16 @@ WPLib.prototype = {
         var self = this;
         var query = function(params, count) {
             return self.get(params)
-            // @ts-ignore
             .then(function(res) {
                 responses.push(res);
-                // @ts-ignore
+                // @ts-ignore limit is never undefined
                 if (res.continue && count < limit) {
                     return query(self.merge(params, res.continue), count + 1);
                 } else {
                     return responses;
                 }
-            // @ts-ignore
             }).catch(function(code, err) {
+                // @ts-ignore err.error always exists
                 console.warn('continuedQuery: Query failed (reason: ' + err.error.info + ', loop count: ' + count + ').');
                 return responses;
             });
@@ -862,7 +854,7 @@ WPLib.prototype = {
      * @param {number} [batchLimit] Optional splicing number (default: 500/50). The '**limit' property of the params is automatically set to 'max' if
      * this argument has the value of either 500 or 50, which means that 'max' is selected when no value is passed to this argument, but the parameter
      * is not modified if a unique value is specified for this argument.
-     * @returns {jQuery<Promise<Array<object|undefined>>>} Always an array; Elements are either ApiResponse (success) or undefined (failure). If the
+     * @returns {JQueryPromise<Array<object|undefined>>} Always an array; Elements are either ApiResponse (success) or undefined (failure). If the
      * batchParam is an empty array, Promise<[]> (empty array) is returned.
      * @license Dr4goniez@github
      * @link https://github.com/Dr4goniez/dragobot/blob/740811cfecc24264b324085c8490ae63ef1ea1ea/src/lib.ts#L360
@@ -883,7 +875,6 @@ WPLib.prototype = {
                 .map(function(key) {
                     return params[key]; // Get multi-value fields as an array
                 })
-                // @ts-ignore
                 .every(function(multiValueFieldArray, i, arr) {
                     return Array.isArray(multiValueFieldArray) && arr.every(function(allMultiValueFieldArray) {
                         self.arraysEqual(multiValueFieldArray, allMultiValueFieldArray);
@@ -891,7 +882,6 @@ WPLib.prototype = {
                 });
             if (!sameArrayProvided) {
                 console.error('massQuery: Batch fields have different arrays.');
-                // @ts-ignore
                 return def.reject();
             }
             batchArray = params[batchParam[0]];
@@ -899,14 +889,12 @@ WPLib.prototype = {
             batchArray = params[batchParam];
             if (!Array.isArray(batchArray)) {
                 console.error('massQuery: Batch field in query must be an array.');
-                // @ts-ignore
                 return def.reject();
             }
         }
         if (batchArray.length === 0) {
             fieldNames = Array.isArray(batchParam) ? batchParam.join(', ') : batchParam;
             console.warn('massQuery: Batch field is an empty array (' + fieldNames + ').');
-            // @ts-ignore
             return def.resolve([]);
         }
         batchArray = batchArray.slice(); // Deep copy
@@ -934,12 +922,11 @@ WPLib.prototype = {
 
             result.push(
                 this.post(params)
-                // @ts-ignore
                 .then(function(res){
                     return res;
                 })
-                // @ts-ignore
                 .catch(function(code, err) {
+                    // @ts-ignore err.error always exists
                     console.warn(err.error.info);
                 })
             );
@@ -955,7 +942,6 @@ WPLib.prototype = {
                 def.resolve(resultArray);
             });
 
-        // @ts-ignore
         return def.promise();
     },
 
@@ -963,7 +949,7 @@ WPLib.prototype = {
      * Get bullet-points-notated interface in the MediaWiki namespace as an array of objects.
      * @param {string} interfaceName block/delete/protect
      * @param {boolean} [createOptionTags] If true, return a string of \<option>s for \<select>
-     * @returns {jQuery<Promise<string|Array<{index: number, caption: string}>>>}
+     * @returns {JQueryPromise<string|Array<{index: number, caption: string}>>}
      */
     getInterface: function(interfaceName, createOptionTags) {
         var def = $.Deferred();
@@ -981,7 +967,6 @@ WPLib.prototype = {
                 break;
             default:
                 console.error('getInterface() only accepts "block", "delete", or "protect" as the first argument.');
-                // @ts-ignore
                 return def.reject();
         }
 
@@ -989,7 +974,6 @@ WPLib.prototype = {
             titles: pagetitle,
             prop: 'revisions',
             rvprop: 'content'
-        // @ts-ignore
         }).then(function(res) {
     
             var resPages;
@@ -1007,7 +991,7 @@ WPLib.prototype = {
             }
             if (rawReasons.length === 0) {
                 console.warn('getInterface() coudn\'t fetch anything out of the interface.');
-                return def.resolve();
+                return def.reject();
             }
 
             var reasons = rawReasons.map(function(matchArray) {
@@ -1035,27 +1019,24 @@ WPLib.prototype = {
             });
             def.resolve(optionTags);
     
-        // @ts-ignore
         }).catch(function(code, err) {
             console.error(err.error.info);
             def.reject();
         });
 
-        // @ts-ignore
         return def.promise();
     },
 
     /**
      * Get a list of VIPs.
      * @param {boolean} [wikiLinkFormat] If true, format the response as '[[WP:VIP#****]]'
-     * @returns {jQuery<Promise<Array<string>>>} Array of '****', where the stars are filtered section titles on [[WP:VIP]].
+     * @returns {JQueryPromise<Array<string>>} Array of '****', where the stars are filtered section titles on [[WP:VIP]].
      */
     getVipList: function(wikiLinkFormat) {
         return this.get({
             action: 'parse',
             page: 'Wikipedia:進行中の荒らし行為',
             prop: 'sections'
-        // @ts-ignore
         }).then(function(res) {
 
             var resSect;
@@ -1088,9 +1069,9 @@ WPLib.prototype = {
 
             return viplist;
 
-        // @ts-ignore
         }).catch(function(code, err) {
-            console.warn('Query failed for getVipList: ' + err.errror.info);
+            // @ts-ignore err.error always exists
+            console.warn('Query failed for getVipList: ' + err.error.info);
             return [];
         });
     },
@@ -1098,7 +1079,7 @@ WPLib.prototype = {
     /**
      * Get a list of LTAs.
      * @param {boolean} [wikiLinkFormat] If true, format the response as '[[LTA:****]]'
-     * @returns {jQuery<Promise<Array<string>>>} Array of 'LTA:****'
+     * @returns {JQueryPromise<Array<string>>} Array of 'LTA:****'
      */
     getLtaList: function(wikiLinkFormat) {
         return this.continuedQuery({
@@ -1107,7 +1088,6 @@ WPLib.prototype = {
             apnamespace: '0',
             apfilterredir: 'redirects',
             aplimit: '200'
-        // @ts-ignore
         }).then(function(res) {
             return res
                 .filter(function(obj) {

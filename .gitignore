@@ -1,3 +1,4 @@
 src/test.js
 .eslintrc.json
 jsdoc.json
+src/MassProtect.js
