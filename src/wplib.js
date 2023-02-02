@@ -362,7 +362,7 @@ WPLib.prototype = {
             innerContent = innerContent.replace(wikilinkRegex, '$1\x01$2');
         }
 
-        var args = innerContent.split('|');
+        var args = innerContent.split('|').map(function(el) { return el.trim(); });
         args.shift(); // Remove template name
         var unnamedArgCount = 0;
 

@@ -1,4 +1,8 @@
 src/test.js
+src/test2.js
+src/test3.js
 .eslintrc.json
 jsdoc.json
 src/MassProtect.js
+src/AjaxBlock.js
+src/index.d.ts

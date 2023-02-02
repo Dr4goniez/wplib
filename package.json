@@ -1,6 +1,6 @@
 {
   "name": "wplib",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A function library for the Japanese Wikipedia.",
   "main": "wplib.js",
   "scripts": {
